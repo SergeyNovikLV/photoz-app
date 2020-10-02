@@ -1,20 +1,20 @@
-class Auth {
-  constructor() {
-     this.authonticated = false;
-  } 
+import React, { createContext, useState } from 'react'
 
-  login(cb) {
-     this.authonticated = true;
-  }
+export const AuthContext = createContext({})
 
-  logout(cb) {
-    this.authonticated = false;
-  }
+function Auth({ children }) {
+  const [isAuthenticated, setAuthStatus] = useState(false)
 
-
-  isAuthonticated(cb) {
-    return this.authonticated;
- }
+  return (
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        setAuthStatus,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  )
 }
 
-export default new Auth();
+export default Auth

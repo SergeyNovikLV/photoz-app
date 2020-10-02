@@ -1,46 +1,76 @@
-import React from "react";
-import "../../css/bootstrap.min.css";
-import "./sign-in.css";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-} from "reactstrap";
-// import Axios from "axios";
+import React, { useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { Card, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { AuthContext } from 'components/Auth'
+// import FormContainer from 'components/FormContainer'
+// import Text from 'components/Text'
+import { Logo } from 'components/Icons'
+// import 'SignIn/sign-in.css'
 
-function SignIn() {
-  return (
-    <main className="cardWrapper">
-      <Card className="card-container">
-        <CardHeader tag="h3">Sign In</CardHeader>
-        <CardBody>
-          <Form>
-            <FormGroup>
-              <Label for="Email">Email</Label>
-              <Input type="email" name="email" id="Email" />
-            </FormGroup>
-            <FormGroup>
-              <Label for="Password">Password</Label>
-              <Input type="password" name="password" id="Password" />
-            </FormGroup>
-          </Form>
-        </CardBody>
-        <CardFooter className="card-footer">
-          <a href="/">Forgot password</a>
-          <Button color="primary">Sign in</Button>
-        </CardFooter>
-      </Card>
-      <div className="cardWrapper-link">
-        <a href="/sign-up">Sign up</a>
-      </div>
-    </main>
-  );
+let signInField = {
+  EMAIL: 'signInEmail',
+  PASSWORD: 'signInPassword',
 }
 
-export default SignIn;
+const SignIn = () => {
+  const history = useHistory()
+  const { setAuthStatus } = useContext(AuthContext)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const { elements } = e.target
+    const data = {
+      email: elements[signInField.email].value,
+      password: elements[signInField.password].value,
+    }
+    console.log(data)
+    setAuthStatus(true)
+    history.push('/')
+  }
+
+  return (
+    <div className="FormContainer">
+      <div className="CardContainer">
+        <Logo />
+        <h1 as="h1">PhotoZ</h1>
+        <Card body className="p-4 mb-2">
+          <h4 as="h4" className="mb-4">
+            Sing in
+          </h4>
+          <Form id="signInForm" onSubmit={handleSubmit}>
+            <FormGroup>
+              <Label for={signInField.email}>Email</Label>
+              <Input
+                required
+                type="email"
+                name={signInField.email}
+                id={signInField.email}
+              />
+            </FormGroup>
+            <FormGroup className="mb-4">
+              <Label for={signInField.password}>Password</Label>
+              <Input
+                required
+                minLength="6"
+                type="password"
+                name={signInField.password}
+                id={signInField.password}
+              />
+            </FormGroup>
+            <Button color="link" className="px-0">
+              Forgot password
+            </Button>
+            <Button type="submit" color="primary" className="float-right">
+              Sign in
+            </Button>
+          </Form>
+        </Card>
+        <Link to="/sign-up" className="mt-2">
+          Sing up
+        </Link>
+      </div>
+    </div>
+  )
+}
+
+export default SignIn
