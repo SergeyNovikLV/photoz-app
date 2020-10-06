@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Button, Form, FormGroup, Label, Input } from 'reactstrap'
-// import FormContainer from 'components/FormContainer'
+import FormContainer from 'components/FormContainer'
 // import Text from 'components/Text'
 import { Logo } from 'components/Icons'
 
@@ -24,12 +24,12 @@ function SignUp() {
   }
 
   return (
-    <div>
+    <FormContainer>
       <Logo />
       <h1 as="h1">PhotoZ</h1>
       <Card body className="p-4 mb-2">
         <h4 as="h4" className="mb-4">
-          Sing up
+          Sing in
         </h4>
         <Form id="signUpForm" onSubmit={handleSubmit}>
           <FormGroup>
@@ -68,7 +68,7 @@ function SignUp() {
       <Link to="/sign-in" className="mt-2">
         Sing in
       </Link>
-    </div>
+    </FormContainer>
   )
 }
 
