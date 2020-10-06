@@ -16,7 +16,7 @@ function App() {
         <Switch>
           <PrivateRoute
             exact
-            path="/"
+            path="//"
             component={Home}
             layout={DashboardLayout}
           />
