@@ -3,11 +3,10 @@ import { Link, useHistory } from 'react-router-dom'
 import { Card, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 import { AuthContext } from 'components/Auth'
 import FormContainer from 'components/FormContainer'
-// import Text from 'components/Text'
 import { Logo } from 'components/Icons'
 import './sign-in.scss'
 
-let signInField = {
+const SIGN_IN_FIELD_NAMES = {
   EMAIL: 'signInEmail',
   PASSWORD: 'signInPassword',
 }
@@ -20,8 +19,8 @@ const SignIn = () => {
     e.preventDefault()
     const { elements } = e.target
     const data = {
-      email: elements[signInField.email].value,
-      password: elements[signInField.password].value,
+      email: elements[SIGN_IN_FIELD_NAMES.EMAIL].value,
+      password: elements[SIGN_IN_FIELD_NAMES.PASSWORD].value,
     }
     console.log(data)
     setAuthStatus(true)
@@ -31,29 +30,28 @@ const SignIn = () => {
   return (
     <FormContainer>
       <Logo />
-      <h1 as="h1">PhotoZ</h1>
+      <h1>PhotoZ</h1>
       <Card body className="p-4 mb-2">
-        <h4 as="h4" className="mb-4">
-          Sing in
-        </h4>
+        <h3>Sing in</h3>
+
         <Form id="signInForm" onSubmit={handleSubmit}>
           <FormGroup>
-            <Label for={signInField.email}>Email</Label>
+            <Label for={SIGN_IN_FIELD_NAMES.EMAIL}>Email</Label>
             <Input
               required
               type="email"
-              name={signInField.email}
-              id={signInField.email}
+              name={SIGN_IN_FIELD_NAMES.EMAIL}
+              id={SIGN_IN_FIELD_NAMES.EMAIL}
             />
           </FormGroup>
           <FormGroup className="mb-4">
-            <Label for={signInField.password}>Password</Label>
+            <Label for={SIGN_IN_FIELD_NAMES.PASSWORD}>Password</Label>
             <Input
               required
               minLength="6"
               type="password"
-              name={signInField.password}
-              id={signInField.password}
+              name={SIGN_IN_FIELD_NAMES.PASSWORD}
+              id={SIGN_IN_FIELD_NAMES.PASSWORD}
             />
           </FormGroup>
           <Button color="link" className="px-0">
