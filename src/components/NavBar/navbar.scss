@@ -1,0 +1,32 @@
+@import 'colors';
+
+.nav-bar {
+  height: 70px;
+  width: 100%;
+  background: $primary;
+
+  .nav-item {
+    list-style: none;
+  }
+
+  .nav-link {
+    color: white;
+  }
+
+  .navbar-brand {
+    display: flex;
+    width: 200px;
+    justify-content: center;
+  }
+
+  h4 {
+    color: white;
+    margin: 0;
+    line-height: 1;
+    padding-top: 10px;
+  }
+
+  button {
+    color: $success;
+  }
+}

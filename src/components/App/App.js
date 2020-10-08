@@ -8,7 +8,7 @@ import Home from 'components/Home'
 import SignIn from 'components/SignIn'
 import SignUp from 'components/SignUp'
 import AuthContext from 'components/Auth'
-
+// test
 function App() {
   return (
     <Router>
@@ -16,7 +16,7 @@ function App() {
         <Switch>
           <PrivateRoute
             exact
-            path="//"
+            path="/"
             component={Home}
             layout={DashboardLayout}
           />
