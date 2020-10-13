@@ -1,5 +1,14 @@
 @import 'colors';
 
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.5rem 1rem;
+}
+
 .nav-bar {
   height: 70px;
   width: 100%;
@@ -29,4 +38,8 @@
   button {
     background-color: $success;
   }
+}
+
+.nav-bar .black {
+  background-color: black;
 }
