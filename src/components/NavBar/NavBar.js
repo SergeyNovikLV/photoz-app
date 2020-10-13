@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import {
   Navbar,
   NavbarBrand,
-  Button,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -10,6 +9,8 @@ import {
 } from 'reactstrap'
 import { Logo } from 'components/Icons'
 import { AuthContext } from 'components/Auth'
+import NewPostModal from 'components/Modal'
+
 import './navbar.scss'
 
 function NavBar() {
@@ -25,7 +26,8 @@ function NavBar() {
       <NavbarBrand className="navbar-brand" href="/">
         <Logo size={36} color="white" className="mr-md-3" /> <h4>PhotoZ</h4>
       </NavbarBrand>
-      <Button className="ml-md-auto">Create new posts</Button>
+      <NewPostModal />
+
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
           John Doe

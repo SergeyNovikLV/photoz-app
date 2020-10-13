@@ -27,6 +27,10 @@ const SignIn = () => {
     history.push('/')
   }
 
+  const openModal = () => {
+    console.log('Open modal')
+  }
+
   return (
     <FormContainer>
       <Logo />
@@ -57,7 +61,12 @@ const SignIn = () => {
           <Button color="link" className="px-0">
             Forgot password
           </Button>
-          <Button type="submit" color="primary" className="float-right">
+          <Button
+            type="submit"
+            color="primary"
+            className="float-right"
+            onClick={openModal}
+          >
             Sign in
           </Button>
         </Form>
